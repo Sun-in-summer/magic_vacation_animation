@@ -96,6 +96,10 @@
   max-width: 34rem;
   font-size: 1.8rem;
   line-height: 2rem;
+  opacity: 0;
+
+
+
 
   @media (min-width: $stop-scaling) {
     margin-top: 36px;
@@ -124,6 +128,11 @@
     line-height: 1.5rem;
   }
 }
+
+  .active .slider__item-text{
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
 
 .slider__controls {
   position: absolute;
