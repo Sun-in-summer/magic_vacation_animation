@@ -248,13 +248,14 @@
       content: "";
       position: absolute;
       bottom: 0;
-      width: 0%;
       height: 2px;
       background-color: $c-light;
-      transition: width 0.5s ease;
-
-
       left: 0;
+      width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+
 
       @media (max-width: $tablet) and (orientation: portrait) {
         left: 0;
@@ -271,7 +272,7 @@
 
     &.active {
       &::after {
-        width: 100%;
+       transform: scaleX(1);
       }
     }
 
@@ -283,6 +284,7 @@
       &::after {
         opacity: 1;
         background-color: $c-purple;
+        transform: scaleX(1);
       }
     }
   }

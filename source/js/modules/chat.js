@@ -4,6 +4,7 @@ export default () => {
   let messageList = document.getElementById(`messages`);
   let chatBlock = document.querySelector(`.js-chat`);
 
+
   messageForm.addEventListener(`submit`, function (e) {
     e.preventDefault();
 

@@ -5,6 +5,9 @@
   margin: 0 auto;
   padding: 0 5.7rem;
   width: 100%;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 1s ease, opacity 0.4s ease;
 
   @media (min-width: $stop-scaling) {
     padding: 0 57px;
@@ -183,6 +186,14 @@
   }
 }
 
-.chat__footer {
-  margin-top: auto;
+// .chat__footer {
+//   margin-top: auto;
+//   // transform: translateX(50%);
+//   // opacity: 0;
+//   // transition: transform 0.4s ease, opacity 0.4s ease;
+// }
+
+.screen--game.active .chat {
+  transform: translateX(0);
+  opacity: 1;
 }
