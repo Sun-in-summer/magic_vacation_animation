@@ -5,7 +5,9 @@
   right: 0;
   padding: 2.7rem 0;
   z-index: 10;
-  transition: color 0.3s ease;//??
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 
   @media (min-width: $stop-scaling) {
     padding: 27px 0;
@@ -36,6 +38,9 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -307,3 +312,18 @@
     width: 100%;
   }
 }
+
+.is-loaded .js-header {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s cubic-bezier(0.7,0,0.3,1) 0.2s,
+              transform 0.6s cubic-bezier(0.7,0,0.3,1) 0.2s;
+}
+
+.is-loaded .page-header__logo {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s cubic-bezier(0.7,0,0.3,1) 0.2s,
+              transform 0.6s cubic-bezier(0.7,0,0.3,1) 0.2s;
+}
+

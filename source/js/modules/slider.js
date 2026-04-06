@@ -5,7 +5,6 @@ export default () => {
   let sliderContainer = document.getElementById(`story`);
   sliderContainer.style.backgroundImage = `url("img/slide1.jpg"), linear-gradient(180deg, rgba(83, 65, 118, 0) 0%, #523E75 16.85%)`;
 
-
   // const animateSlides = () => {
   //   console.log(`animate`);
 
@@ -47,9 +46,8 @@ export default () => {
   //   });
   // };
 
-
   const setSlider = function () {
-    if (((window.innerWidth / window.innerHeight) < 1) || window.innerWidth < 769) {
+    if (window.innerWidth / window.innerHeight < 1 || window.innerWidth < 769) {
       storySlider = new Swiper(`.js-slider`, {
         pagination: {
           el: `.swiper-pagination`,
@@ -59,7 +57,6 @@ export default () => {
           enabled: true,
         },
         on: {
-
           slideChangeTransitionEnd: () => {
             // animateSlides();
             if (
@@ -84,7 +81,6 @@ export default () => {
               sliderContainer.style.backgroundImage = `url("img/slide4.jpg"), linear-gradient(180deg, rgba(45, 39, 63, 0) 0%, #2F2A42 16.85%)`;
             }
           },
-
 
           resize: () => {
             storySlider.update();
@@ -140,3 +136,33 @@ export default () => {
 
   setSlider();
 };
+
+const fillBg = document.querySelector(`.js-fill-bg`);
+const storyScreen = document.getElementById(`story`);
+const prizesScreen = document.getElementById(`prizes`);
+
+function goToPrizes() {
+  // 1. Показываем фон
+  fillBg.classList.add(`active`);
+
+  // 2. Ждём окончания анимации заливки (800ms)
+  setTimeout(() => {
+    // Скрываем предыдущий экран
+    storyScreen.classList.add(`screen--hidden`);
+    // Показываем экран Призы
+    prizesScreen.classList.remove(`screen--hidden`);
+
+    // Если нужно, фон можно убрать после показа Призов
+    fillBg.classList.remove(`active`);
+  }, 800);
+}
+
+// Пример вызова функции — при клике на "следующий слайд" на Истории
+const nextBtn = document.querySelector(`.js-control-next`);
+nextBtn.addEventListener(`click`, () => {
+  // условие: если мы на последнем слайде Истории
+  const swiper = document.querySelector(`.js-slider`).swiper;
+  if (swiper.activeIndex === swiper.slides.length - 1) {
+    goToPrizes();
+  }
+});
